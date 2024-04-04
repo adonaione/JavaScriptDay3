@@ -2937,16 +2937,36 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "let myCar = {\n    color: 'red',\n    make: 'Ford',\n    model: 'Mustang',\n    drive: function(miles){\n        console.log(`${this.color} ${this.make} ${this.model} has driven ${miles} miles`)\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "console.log(myCar);\nconsole.log(typeof myCar);\nconsole.log(myCar.drive);\n\nmyCar.drive(100);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  color: 'red',",
+                                "  make: 'Ford',",
+                                "  model: 'Mustang',",
+                                "  drive: [Function: drive]",
+                                "}",
+                                "object",
+                                "[Function: drive]",
+                                "red Ford Mustang has driven 100 miles",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
@@ -2954,6 +2974,141 @@
                 "console.log(typeof testArray) //object\nconsole.log(testArray instanceof Array) //true\nconsole.log(Array instanceof Object) //true\nconsole.log(Array.isArray(testArray)) //true\nconsole.log(\"========\")\nconsole.log(testArray instanceof Object) //true\nconsole.log(testObj instanceof Object)  //true\nconsole.log(Array.isArray(testObj)) //false\nconsole.log(typeof 'hello') //string\nconsole.log(\"========\")\nconsole.log(typeof {}) //object\nconsole.log('hello' instanceof Object) //False\nconsole.log(typeof null); //object\nconsole.log(null instanceof Object) //False\nconsole.log({key:1} instanceof Object)  //true\n"
             ],
             "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "let testPerson = {};\ntestPerson.age = 22;\ntestPerson.name = 'John';\ntestPerson.jump = function(){console.log(this.name + ' just jumped')};\ntestPerson.squat = function(){console.log(this.name + ' just squatted')};\n\nconsole.log(testPerson);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  age: 22,",
+                                "  name: 'John',",
+                                "  jump: [Function (anonymous)],",
+                                "  squat: [Function (anonymous)]",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "testPerson.jump();\ntestPerson.squat();"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "John just jumped",
+                                "John just squatted",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "function doesNothing(){};\nconsole.log(doesNothing);\nconsole.log(typeof doesNothing); // function (not object)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[Function: doesNothing]",
+                                "function",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "doesNothing.aKey = 'a value';\n\nconsole.log(doesNothing.aKey);\nconsole.log(doesNothing.name);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "a value",
+                                "doesNothing",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "const createPerson = function(name, age){\n    createPerson.realName = name; // use .realName because .name is already a read-only property\n    createPerson.age = age;\n    createPerson.jump = function(){console.log(this.name + ' just jumped')};\n    createPerson.squat = function(){console.log(this.name + ' just squatted')};\n\n    return createPerson;\n}\n\nlet person1 = createPerson('Julie', 25);\nconsole.log(person1);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[Function: createPerson] {",
+                                "  realName: 'Julie',",
+                                "  age: 25,",
+                                "  jump: [Function (anonymous)],",
+                                "  squat: [Function (anonymous)]",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "person1.jump();\nperson1.squat();"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "createPerson just jumped",
+                                "createPerson just squatted",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -2982,6 +3137,50 @@
                 "The `new` keyword will initialize an object and return it for you.  It will also allow the use of the this keyword"
             ],
             "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "const createPerson2 = function(name, age){\n    this.name = name; \n    this.age = age;\n    this.jump = function(){console.log(this.name + ' just jumped')};\n    this.squat = function(){console.log(this.name + ' just squatted')};\n}\n\nlet person2 = new createPerson2('Mike', 23);\nconsole.log(person2);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "createPerson2 {",
+                                "  name: 'Mike',",
+                                "  age: 23,",
+                                "  jump: [Function (anonymous)],",
+                                "  squat: [Function (anonymous)]",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "person2.jump();\nperson2.squat();"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Mike just jumped",
+                                "Mike just squatted",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
@@ -3105,58 +3304,221 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "\nlet sally = new createPerson2('Sally', 45);\nlet frank = new createPerson2('Frank', 76);\n\nconsole.log(sally);\nconsole.log(frank);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "createPerson2 {",
+                                "  name: 'Sally',",
+                                "  age: 45,",
+                                "  jump: [Function (anonymous)],",
+                                "  squat: [Function (anonymous)]",
+                                "}",
+                                "createPerson2 {",
+                                "  name: 'Frank',",
+                                "  age: 76,",
+                                "  jump: [Function (anonymous)],",
+                                "  squat: [Function (anonymous)]",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "console.log(sally.jump === frank.jump); // false"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "false",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "let personMethods = {\n    jump: function(){console.log(this.name + ' just jumped')},\n    squat: function(){console.log(this.name + ' just squatted')}\n}"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "const createPerson3 = function(name, age){\n    this.name = name; \n    this.age = age;\n    this.jump = personMethods.jump;\n    this.squat = personMethods.squat;\n}\n\nlet hannah = new createPerson3('Hannah', 43);\nlet bill = new createPerson3('Bill', 14);\n\nconsole.log(hannah.jump === bill.jump);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "true",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "hannah.jump();\nbill.jump();"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Hannah just jumped",
+                                "Bill just jumped",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "// Every function has a property called .prototype that is an object\n\nfunction doNothing(){};\n\nconsole.log(doNothing.prototype);\nconsole.log(typeof doNothing.prototype);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{}",
+                                "object",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "// Object.create(obj)\n// creates a new object, using an existing object as the prototype of the newly created object (aka the look up)\n\nlet parent = {\n    first: 'Seamus',\n    last: 'Callahan',\n    nationality: 'Irish',\n    bloodType: 'O-'\n};\n\nconsole.log(parent);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  first: 'Seamus',",
+                                "  last: 'Callahan',",
+                                "  nationality: 'Irish',",
+                                "  bloodType: 'O-'",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let child1 = Object.create(parent);\nchild1.first = 'Eileen';\n"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "\u001b[32m'Eileen'\u001b[39m"
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "console.log(child1);\nconsole.log(child1.first);\nconsole.log(child1.last);\nconsole.log(child1.nationality);\nconsole.log(child1.bloodType);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{ first: 'Eileen' }",
+                                "Eileen",
+                                "Callahan",
+                                "Irish",
+                                "O-",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "const createPerson4 = function(name, age){\n    this.name = name; \n    this.age = age;\n}\n\ncreatePerson4.prototype.jump = function(){console.log(this.name + ' just jumped')}\ncreatePerson4.prototype.squat = function(){console.log(this.name + ' just squatted')}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "\u001b[36m[Function (anonymous)]\u001b[39m"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "let dan = new createPerson4('Dan', 28);\nconsole.log(dan);\n\ndan.jump();\ndan.squat();\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "createPerson4 { name: 'Dan', age: 28 }",
+                                "Dan just jumped",
+                                "Dan just squatted",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -3175,16 +3537,40 @@
         {
             "language": "javascript",
             "source": [
-                "String.prototype.toTitleCase=function() {\r\n  str = this.toLowerCase().split(' ');\r\n  for (var i = 0; i < str.length; i++) {\r\n    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); \r\n  }\r\n  return str.join(' ');\r\n}"
+                "String.prototype.toTitleCase = function(){\n  words = this.toLowerCase().split(' ');\n  for (let i=0; i < words.length; i++){\n      words[i] = words[i][0].toUpperCase() + words[i].slice(1);\n  }\n  return words.join(' ');\n};\n"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "\u001b[36m[Function (anonymous)]\u001b[39m"
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                "\"hello you kind human\".toTitleCase()"
+                "const sentence = \"toDay is ThuRSdaY ApRiL 4tH anD wE ArE LearNinG JavAScriPT\";\nconsole.log(sentence.toTitleCase());"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.error",
+                            "value": {
+                                "name": "TypeError",
+                                "message": "sentence.toTitleCase is not a function",
+                                "stack": "    at <Cell 230> [2, 7]\n    at <Cell 230> [5, 46]\n    at Script.runInContext (node:vm:148:12)\n    at Script.runInNewContext (node:vm:153:17)\n    at Object.runInNewContext (node:vm:309:38)\n    at C (/Users/adonairomero/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:113345)\n    at t.execCode (/Users/adonairomero/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:114312)\n    at k.<anonymous> (/Users/adonairomero/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:142156)\n    at k.emit (node:events:518:28)\n    at k.emit (node:domain:488:12)"
+                            }
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
@@ -3210,37 +3596,100 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "class Person{\n    constructor(name, age){\n        this.name = name;\n        this.age = age;\n    }\n\n    jump(){\n        console.log(this.name + ' has jumped')\n    }\n\n    squat() {\n        console.log(this.name + ' is doing a squat');\n    }\n}\n\nlet taylor = new Person('Taylon', 22);\nconsole.log(taylor);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Person { name: 'Taylon', age: 22 }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "let liam = new Person('Liam', 34);\nconsole.log(liam);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Person { name: 'Liam', age: 34 }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "taylor.jump();\nliam.squat();"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Taylon has jumped",
+                                "Liam is doing a squat",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "console.log(taylor.jump === liam.jump);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "true",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
                 ""
             ],
-            "outputs": []
-        },
-        {
-            "language": "javascript",
-            "source": [
-                ""
-            ],
-            "outputs": []
-        },
-        {
-            "language": "javascript",
-            "source": [
-                ""
-            ],
-            "outputs": []
-        },
-        {
-            "language": "javascript",
-            "source": [
-                ""
-            ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "createPerson4 { name: 'Dan', age: 28 }",
+                                "Dan just jumped",
+                                "Dan just squatted",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
@@ -3273,51 +3722,68 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "\nclass Baby extends Person {\n    constructor(name, age, isWalking){\n        super(name, age);\n        this.isWalking = isWalking;\n    }\n\n    walk(){\n        if (this.isWalking){\n            console.log(this.name + ' is walking')\n        } else {\n            console.log(this.name + ' is crawling')\n        }\n    }\n}\n"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let maggie = new Baby('Maggie', 1, false);\nconsole.log(maggie);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Baby { name: 'Maggie', age: 1, isWalking: false }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "maggie.walk();\nmaggie.jump();\nmaggie.squat();"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Maggie is crawling",
+                                "Maggie has jumped",
+                                "Maggie is doing a squat",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "// Inheritance flows down. Person instances will not have the .walk method\nconsole.log(liam); \n// liam.walk(); // typeError: liam does not have .walk method"
             ],
-            "outputs": []
-        },
-        {
-            "language": "javascript",
-            "source": [
-                ""
-            ],
-            "outputs": []
-        },
-        {
-            "language": "javascript",
-            "source": [
-                "// Inheritance flows down. Human instances will not have the .walk method\r\n"
-            ],
-            "outputs": []
-        },
-        {
-            "language": "javascript",
-            "source": [
-                ""
-            ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Person { name: 'Liam', age: 34 }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -3336,23 +3802,56 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "// Usin the super() outside of the constructor\n// super.methodName()"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "class Animal{\n    constructor(name){\n        this.name = name\n    }\n\n    speak(){\n        console.log(`${this.name} makes a noise`)\n    }\n}\n\n// Child Class extending the Parent Animal class\nclass Dog extends Animal{\n    constructor(name, breed){\n        super(name); // Call the constructor of the parent class Animal\n        this.breed = breed\n    };\n\n    // Method using super to call a method from parent class\n    speak(){\n        super.speak();\n        console.log(`I am a ${this.breed} named ${this.name}`)\n    }\n}"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let spot = new Dog ('Spot', 'Labrador');\nspot.speak()"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Spot makes a noise",
+                                "I am a Labrador named Spot",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "class Cat extends Animal{\n    constructor(name, color){\n        super(name);\n        this.color = color\n    }\n\n    speak(){\n        super.speak();\n        console.log(`I am a ${this.color} cat named ${this.name}`)\n    }\n}\n\nlet whiskers = new Cat('Whiskers', 'orange');\n\nwhiskers.speak();\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Whiskers makes a noise",
+                                "I am a orange cat named Whiskers",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -3378,7 +3877,7 @@
         {
             "language": "javascript",
             "source": [
-                "\r\n"
+                "\n"
             ],
             "outputs": []
         },
@@ -3420,51 +3919,87 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "function createMultiplier(x){\n    // defines a function called multiply - closure!\n    function multiply(y){\n        return x * y\n    }\n    // returns the multiply function\n    return multiply\n}\n"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let fiveTimes = createMultiplier(5);\nconsole.log(fiveTimes);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[Function: multiply]",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "console.log(fiveTimes(10)); // 50\nconsole.log(fiveTimes(7)); // 35\n// console.log(x); // ReferenceError: x is not defined"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "50",
+                                "35",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let timesThree = createMultiplier(3);\nconsole.log(timesThree);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[Function: multiply]",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "console.log(timesThree(10)); // 30\nconsole.log(timesThree(7)); // 21"
             ],
-            "outputs": []
-        },
-        {
-            "language": "javascript",
-            "source": [
-                ""
-            ],
-            "outputs": []
-        },
-        {
-            "language": "javascript",
-            "source": [
-                ""
-            ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "30",
+                                "21",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -3483,21 +4018,57 @@
         {
             "language": "javascript",
             "source": [
-                "//simple example\r\n\r\n"
+                "//simple example\nfunction outer(){\n    let myVar = 1;\n    function inner(){\n        console.log(myVar++)\n    }\n    return inner;\n}\n"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "// let adder equal the return value of outer -> the inner function\nlet adder = outer();\nconsole.log(adder);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[Function: inner]",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "adder();\nadder();\nadder();\nadder();\nadder();\nadder();"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "console.log(myVar); // ReferenceError: myVar is not defined"
             ],
             "outputs": []
         },
@@ -3539,30 +4110,83 @@
         {
             "language": "javascript",
             "source": [
-                "// Non self invoking:\r\n\r\n// Step 1 - Create the function\r\n\r\n\r\n// Step 2 - Invoke the funcion\r\n"
+                "// Non self invoking:\n\n// Step 1 - Create the function\nfunction sayHi(aName){\n    console.log('Hi ' + aName)\n}\n\n// Step 2 - Invoke the funcion\nsayHi('Charlie');"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Hi Charlie",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                "// IIFE - Immediately Invoked Function Expression\r\n"
+                "// IIFE - Immediately Invoked Function Expression\n// (function definition)(params)\n(function sayHi(aName){\n    console.log('Hi ' + aName)\n})('Claire');"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Hi Claire",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "// Create the adder (which we'll call stepper) using an IIFE\n\nconst stepper = (function(){\n    let count = 1;\n    return function(){\n        console.log(count++)\n    }\n})()\n\nconsole.log(stepper);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[Function (anonymous)]",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "stepper();\nstepper();\nstepper();\nstepper();\nstepper();\nstepper();"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -3574,30 +4198,28 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "// let fibCache = {}\n// function fib(num){\n//     if (num <= 1){\n//         return num\n//     } else if (num in fibCache){\n//         return fibCache[num]\n//     } else {\n//         let fibNum = fib(num - 1) + fib(num - 2)\n//         fibCache[num] = fibNum\n//         return fibNum\n//     }\n// };\n\n\n// console.log(fib(30));\n\n// console.log(fibCache);\n\n\nfunction createFib(){\n    let fibCache = {}\n    function fib(num){\n        if (num <= 1){\n            return num\n        } else if (num in fibCache){\n            return fibCache[num]\n        } else {\n            let fibNum = fib(num - 1) + fib(num - 2)\n            fibCache[num] = fibNum\n            return fibNum\n        }\n    };\n    return fib\n    \n}"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "const fib = createFib();\n\n\nconsole.log(fib(60));\n// console.log(fibCache); // ReferenceError: fibCache is not defined"
             ],
-            "outputs": []
-        },
-        {
-            "language": "javascript",
-            "source": [
-                ""
-            ],
-            "outputs": []
-        },
-        {
-            "language": "javascript",
-            "source": [
-                ""
-            ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "1548008755920",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -3616,21 +4238,21 @@
         {
             "language": "javascript",
             "source": [
-                "console.log('Above timeout');\r\n\r\nsetTimeout(() => { console.log('In the timeout') }, 2000);\r\n\r\nconsole.log('Below timeout');"
+                "console.log('Above timeout');\n\nsetTimeout(() => { console.log('In the timeout') }, 2000);\n\nconsole.log('Below timeout');"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                "console.log('Above timeout');\r\n\r\nsetTimeout(() => { console.log('In the timeout') }, 0);\r\n\r\nconsole.log('Below timeout');"
+                "console.log('Above timeout');\n\nsetTimeout(() => { console.log('In the timeout') }, 0);\n\nconsole.log('Below timeout');"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                "function first(){\r\n    console.log('Start');\r\n    setTimeout(() => {\r\n        console.log('First');\r\n    }, 2000)\r\n}\r\n\r\n\r\nfunction second(){\r\n    console.log('Second');\r\n}\r\n\r\n\r\n\r\nfirst();\r\nsecond();"
+                "function first(){\n    console.log('Start');\n    setTimeout(() => {\n        console.log('First');\n    }, 2000)\n}\n\n\nfunction second(){\n    console.log('Second');\n}\n\n\n\nfirst();\nsecond();"
             ],
             "outputs": []
         },
@@ -3644,7 +4266,7 @@
         {
             "language": "javascript",
             "source": [
-                "var tfunc1 = () => { tfunc2() }\r\n\r\nvar tfunc2 = () => { tfunc3() }\r\n\r\nvar tfunc3 = () => { console.log('Hello') }\r\n\r\nsetTimeout(() => console.log('In the timeout'), 0)\r\n\r\n\r\ntfunc1();"
+                "var tfunc1 = () => { tfunc2() }\n\nvar tfunc2 = () => { tfunc3() }\n\nvar tfunc3 = () => { console.log('Hello') }\n\nsetTimeout(() => console.log('In the timeout'), 0)\n\n\ntfunc1();"
             ],
             "outputs": []
         },
@@ -4022,14 +4644,14 @@
         {
             "language": "javascript",
             "source": [
-                "//.then .catch\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+                "//.then .catch\n\n\n\n\n\n\n\n\n"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                "// async await\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+                "// async await\n\n\n\n\n\n\n\n\n"
             ],
             "outputs": []
         }
