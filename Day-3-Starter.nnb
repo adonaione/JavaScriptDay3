@@ -682,23 +682,67 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "let primaryColors = ['red', 'yellow', 'blue'];\nconsole.log(primaryColors); // Output: [\"red\", \"yellow\", \"blue\"]\n\nlet [r, y, b]  = primaryColors;\n"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[ 'red', 'yellow', 'blue' ]",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "console.log(r);\nconsole.log(y);\nconsole.log(b);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "red",
+                                "yellow",
+                                "blue",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let shoe1 = {\n    color: 'blue',\n    brand: 'Adidas',\n    size: 10\n};\n\nconsole.table(shoe1)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "┌─────────┬──────────┐",
+                                "│ (index) │ Values   │",
+                                "├─────────┼──────────┤",
+                                "│ color   │ 'blue'   │",
+                                "│ brand   │ 'Adidas' │",
+                                "│ size    │ 10       │",
+                                "└─────────┴──────────┘",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -717,14 +761,73 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "let { size, color, brand } = shoe1;\n\nconsole.log(size);\nconsole.log(color);\nconsole.log(brand);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "10",
+                                "blue",
+                                "Adidas",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "let {favColor} = person3;\n\nconsole.log(favColor)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Blue",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "// variable name Must match the key in the object. If not, it will be undefined\n\nlet { price } = shoe1;\n\nconsole.log(price);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "undefined",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "let car1 = {\n    carColor: 'pink',\n    make: 'Ford',\n    model: 'F-150'\n};"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let { carColor, make, model } = car1;\n// ^^ this is equivalent to below\nlet carColor = car1.carColor;\nlet make = car1.make;\nlet model = car1.model;"
             ],
             "outputs": []
         },
@@ -745,9 +848,44 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "function destructureArray1(arr){\n    console.log(arr[0])\n    console.log(arr[1])\n    console.log(arr[2])\n}\n\ndestructureArray1(['a', 'b', 'c'])"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "a",
+                                "b",
+                                "c",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "function destructureArray2([x, y, z]){\n    console.log(x)\n    console.log(y)\n    console.log(z)\n}\ndestructureArray1(['a', 'b', 'c', 'd', 'e', 'f'])"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "a",
+                                "b",
+                                "c",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -759,9 +897,51 @@
         {
             "language": "javascript",
             "source": [
-                "//Without destructuring\r\n"
+                "//Without destructuring\nfunction logShoeInfo(shoeObj){\n    console.log(shoeObj.color);\n    console.log(shoeObj.brand);\n    console.log(shoeObj.size);\n}"
             ],
             "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "logShoeInfo(shoe1)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "blue",
+                                "Adidas",
+                                "10",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "let shoe2 = {\n    size: 12,\n    color: 'green',\n    brand: 'Puma'\n};\n\nlogShoeInfo(shoe2)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "green",
+                                "Puma",
+                                "12",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -773,23 +953,93 @@
         {
             "language": "javascript",
             "source": [
-                "//With Destructuring \r\n"
+                "//With Destructuring \nfunction logShoe({ color, size, brand}){\n    console.log(color);\n    console.log(brand);\n    console.log(size);\n}"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "logShoe(shoe1)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "blue",
+                                "Adidas",
+                                "10",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "logShoe(shoe2)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "green",
+                                "Puma",
+                                "12",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "let radicalShoe = {\n    brand: 'Rad',\n    color: 'Tie-Dye',\n    size: 10,\n    secondaryColor: 'black',\n    hiTops: true\n}\n\nlogShoe(radicalShoe)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Tie-Dye",
+                                "Rad",
+                                "10",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "let sandal = {\n    brand: 'Birkenstock',\n    color: 'beige'\n};\n\nlogShoe(sandal)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "beige",
+                                "Birkenstock",
+                                "undefined",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -801,16 +1051,65 @@
         {
             "language": "javascript",
             "source": [
-                "let personJones={\r\n    firstName:\"Russel\",\r\n    lastName:\"Jones\",\r\n    nickName:\"Ol' Dirty Illegitimate Child\",\r\n    age: 35,\r\n    height:62\r\n}\r\n\r\nlet quote = `Here I go, deep type flow, Jackques Costueau could never get this low.`\r\n"
+                "let personJones={\n    firstName:\"Russel\",\n    lastName:\"Jones\",\n    nickName:\"Ol' Dirty Illegitimate Child\",\n    age: 35,\n    height:62\n}\n\nlet quote = `Here I go, deep type flow, Jackques Costueau could never get this low.`\n"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "function sayIt(aQuote, { firstName, lastName, nickName, age, height, }){\n    console.log(`\"${aQuote}\"`)\n    console.log(`By ${firstName} \"${nickName}\" ${lastName}\\nAge ${age},  Height: ${height}`)\n}"
             ],
             "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "sayIt(quote, personJones)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\"Here I go, deep type flow, Jackques Costueau could never get this low.\"",
+                                "By Russel \"Ol' Dirty Illegitimate Child\" Jones",
+                                "Age 35,  Height: 62",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "let personMe = {\n    firstName: \"Brian\",\n    lastName: \"Stanton\",\n    nickName: \"Cool Guy\",\n    age: 99,\n    height: 99\n};"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "sayIt(\"I Love JavaScript!\", personMe)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "\"I Love JavaScript!\"",
+                                "By Brian \"Cool Guy\" Stanton",
+                                "Age 99,  Height: 99",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -829,9 +1128,27 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "console.table(person1)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "┌─────────────┬───────────────┐",
+                                "│ (index)     │ Values        │",
+                                "├─────────────┼───────────────┤",
+                                "│ name        │ 'Janet'       │",
+                                "│ city        │ 'Louiseville' │",
+                                "│ isGoodCoder │ false         │",
+                                "└─────────────┴───────────────┘",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -843,9 +1160,27 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "let janet = {...person1};\nconsole.table(janet)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "┌─────────────┬───────────────┐",
+                                "│ (index)     │ Values        │",
+                                "├─────────────┼───────────────┤",
+                                "│ name        │ 'Janet'       │",
+                                "│ city        │ 'Louiseville' │",
+                                "│ isGoodCoder │ false         │",
+                                "└─────────────┴───────────────┘",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -857,9 +1192,28 @@
         {
             "language": "javascript",
             "source": [
-                "//add an id of 187 to the person object and save it as a new object called newPerson\r\n"
+                "//add an id of 187 to the person object and save it as a new object called newPerson\n\nlet newPerson1 = {...person1,  id: 187};\n\nconsole.table(newPerson1);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "┌─────────────┬───────────────┐",
+                                "│ (index)     │ Values        │",
+                                "├─────────────┼───────────────┤",
+                                "│ name        │ 'Janet'       │",
+                                "│ city        │ 'Louiseville' │",
+                                "│ isGoodCoder │ false         │",
+                                "│ id          │ 187           │",
+                                "└─────────────┴───────────────┘",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -871,14 +1225,26 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "let obj1 = {a: 123, b: 456};\nlet obj2 = {c: 789, d: 10};\n\nlet obj3 = {...obj1, ...obj2};\nconsole.log(obj3); //{ a: 123, b: 456, c: 789, d:  10 }"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{ a: 123, b: 456, c: 789, d: 10 }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let objA = {id: 10001, name: 'Item A', price: 5.99};\nlet objB = { price: 9.55, description: 'Great New Item'};"
             ],
             "outputs": []
         },
@@ -892,16 +1258,50 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "let objAB = {...objA, ...objB};\n\nconsole.log(objAB); // {a: 10, b: \"world\", c: true}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  id: 10001,",
+                                "  name: 'Item A',",
+                                "  price: 9.55,",
+                                "  description: 'Great New Item'",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let objBA = {...objB, ...objA}\n\nconsole.log(objBA)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  price: 5.99,",
+                                "  description: 'Great New Item',",
+                                "  id: 10001,",
+                                "  name: 'Item A'",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -920,14 +1320,86 @@
         {
             "language": "javascript",
             "source": [
-                "restTestObj={\r\n    id:1,\r\n    title: \"test\",\r\n    body: \"My Test\",\r\n    author: \"Stephen King\"\r\n}\r\n"
+                "let restTestObj={\n    id:1,\n    title: \"test\",\n    body: \"My Test\",\n    author: \"Stephen King\"\n}\n\nlet { title, author, ...otherStuff} = restTestObj;\n\nconsole.log(title)\nconsole.log(author)\nconsole.log(otherStuff);  "
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.error",
+                            "value": {
+                                "name": "Error",
+                                "message": "Failed to generate code object, Cannot read properties of undefined (reading 'type')",
+                                "stack": ""
+                            }
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                "// If the property is not in the object, the variable will be undefined\r\n\r\nlet country = {\r\n    name: 'USA',\r\n    capital: 'Washington, D.C.',\r\n    founded: 1776\r\n}\r\n"
+                "let restTestObj = {\n    id: 1,\n    title: 'test',\n    body: 'this is the body',\n    author: \"IWROTE THIS\"\n}\n\nlet {title, author, ...other} = restTestObj\n\nconsole.log(title)\nconsole.log(author)\nconsole.log(other)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.error",
+                            "value": {
+                                "name": "Error",
+                                "message": "Failed to generate code object, Cannot read properties of undefined (reading 'type')",
+                                "stack": ""
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "let restTestObj = {\n    id: 1,\n    title: 'test',\n    body: 'this is the body',\n    author: \"IWROTE THIS\"\n};\n\nconsole.log(restTestObj);\n\nlet {title, author, ...doesntWork} = restTestObj\n\nconsole.log(doesntWork)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.error",
+                            "value": {
+                                "name": "Error",
+                                "message": "Failed to generate code object, Cannot read properties of undefined (reading 'type')",
+                                "stack": ""
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "// If the property is not in the object, the variable will be undefined\n\nlet country = {\n    name: 'USA',\n    capital: 'Washington, D.C.',\n    founded: 1776\n}\n\nlet {population} = country;\nconsole.log(population)\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "undefined",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "let student = {\n    name: \n}"
             ],
             "outputs": []
         },
@@ -948,14 +1420,7 @@
         {
             "language": "javascript",
             "source": [
-                ""
-            ],
-            "outputs": []
-        },
-        {
-            "language": "javascript",
-            "source": [
-                "// This:\r\nlet { studentName, grade, teacher } = student;\r\n\r\n// is equivalent to this:\r\nlet studentName = student.studentName;\r\nlet grade = student.grade;\r\nlet teacher = student.teacher;\r\n\r\n\r\n// ^ The above will throw an error because of let declarations (example only)"
+                "// This:\nlet { studentName, grade, teacher } = student;\n\n// is equivalent to this:\nlet studentName = student.studentName;\nlet grade = student.grade;\nlet teacher = student.teacher;\n\n\n// ^ The above will throw an error because of let declarations (example only)"
             ],
             "outputs": []
         },
@@ -976,16 +1441,33 @@
         {
             "language": "javascript",
             "source": [
-                "var destructMe={\r\n    title: \"Intro to JavaScript\",\r\n    body: \"I really wish JavaScript had static type checking\",\r\n    createdOn: new Date(),\r\n    author: \"Kevin Beier\",\r\n    topic: \"Programming\",\r\n    tags: [\"JS\", \"Async\", \"Dynamic Types\"]\r\n}"
+                "let destructMe={\n    title: \"Intro to JavaScript\",\n    body: \"I really wish JavaScript had static type checking\",\n    createdOn: new Date(),\n    author: \"Kevin Beier\",\n    topic: \"Programming\",\n    tags: [\"JS\", \"Async\", \"Dynamic Types\"]\n}"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                "//Solution\r\n\r\n\r\n\r\n\r\n//OUTPUT:\r\n/*\r\nIntro to JavaScript I really wish JavaScript had static type checking Kevin Beier\r\n{\r\n  createdOn: 2023-06-07T16:18:31.133Z,\r\n  topic: 'Programming',\r\n  tags: [ 'JS', 'Async', 'Dynamic Types' ]\r\n}\r\n*/"
+                "//Solution\nfunction destructed({ title, body, author, ...other}){\n  console.log(title, body, author);\n  console.log(other);\n}\n\n\ndestructed(destructMe)\n\n\n\n//OUTPUT:\n/*\nIntro to JavaScript I really wish JavaScript had static type checking Kevin Beier\n{\n  createdOn: 2023-06-07T16:18:31.133Z,\n  topic: 'Programming',\n  tags: [ 'JS', 'Async', 'Dynamic Types' ]\n}\n*/"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Intro to JavaScript I really wish JavaScript had static type checking Kevin Beier",
+                                "{",
+                                "  createdOn: 2024-04-03T20:04:36.527Z,",
+                                "  topic: 'Programming',",
+                                "  tags: [ 'JS', 'Async', 'Dynamic Types' ]",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1004,58 +1486,162 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "let friendObj1 = {\n    name: 'Jack',\n    friends: ['John', 'Joe', 'Jim']\n};\n\n\n"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let friendObj2 = {\n    name: \"Kylie\"\n};\n"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "friendObj1.friends.push('Jeremy');\nconsole.log(friendObj1);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{ name: 'Jack', friends: [ 'John', 'Joe', 'Jim', 'Jeremy' ] }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "\n"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                "\r\n"
+                "friendObj2.friends.push('Kendall'); // can't push onto an empty(non-existent) category\nconsole.log(friendObj2); // error"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.error",
+                            "value": {
+                                "name": "TypeError",
+                                "message": "Cannot read properties of undefined (reading 'push')",
+                                "stack": "    at <Cell 115> [1, 0]\n    at <Cell 115> [5, 46]\n    at Script.runInContext (node:vm:148:12)\n    at Script.runInNewContext (node:vm:153:17)\n    at Object.runInNewContext (node:vm:309:38)\n    at C (/Users/adonairomero/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:113345)\n    at t.execCode (/Users/adonairomero/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:114312)\n    at k.<anonymous> (/Users/adonairomero/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:142156)\n    at k.emit (node:events:518:28)\n    at k.emit (node:domain:488:12)"
+                            }
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let movies = [\n    { id: 1, title: 'Oppenheimer', releaseYear: 2023, studio: { name: 'Warner Bros'}},\n    { id: 2, title: 'The Dark Knight', releaseYear: 2009, studio: { name: 'Sony'}},\n    { id: 3, title: 'Gladiator', releaseYear: 2001}\n]\nconsole.log(movies);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[",
+                                "  {",
+                                "    id: 1,",
+                                "    title: 'Oppenheimer',",
+                                "    releaseYear: 2023,",
+                                "    studio: { name: 'Warner Bros' }",
+                                "  },",
+                                "  {",
+                                "    id: 2,",
+                                "    title: 'The Dark Knight',",
+                                "    releaseYear: 2009,",
+                                "    studio: { name: 'Sony' }",
+                                "  },",
+                                "  { id: 3, title: 'Gladiator', releaseYear: 2001 }",
+                                "]",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                "movies = [\r\n    { id: 1, title: 'Oppenheimer', releaseYear: 2023, studio: { name: 'Warner Bros'}},\r\n    { id: 2, title: 'The Dark Knight', releaseYear: 2009, studio: { name: 'Sony'}},\r\n    { id: 3, title: 'Gladiator', releaseYear: 2001}\r\n]"
+                "for (let movie of movies){\n    console.log(movie.studio?.name); // adding \"?\" prevents error\n}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Warner Bros",
+                                "Sony",
+                                "undefined",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "// condition ? if true : if false\nfor (let movie of movies){\n    console.log(movie.studio ? movie.studio.name : undefined)\n}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Warner Bros",
+                                "Sony",
+                                "undefined",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                "// condition ? if true : if false\r\n"
+                "let movies2 = [\n    { id: 1, title: 'Oppenheimer', releaseYear: 2023, studio: { name: 'Warner Bros', address: {street: 'Rodeo Dr', city: 'Los Angeles'}}},\n    { id: 2, title: 'The Dark Knight', releaseYear: 2009, studio: { name: 'Sony', address: {street: 'Shibuya', city: 'Tokyo'}}},\n    { id: 3, title: 'Gladiator', releaseYear: 2001}\n]\n\nconsole.log('---------------------')\n\nfor (let m of movies2){\n    console.log(m.studio?.address?.city)\n}\n\nfor (let m of movies2){\n    console.log(m.studio ? m.studio.address ? m.studio.address.city : undefined : undefined)\n}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "---------------------",
+                                "Los Angeles",
+                                "Tokyo",
+                                "undefined",
+                                "Los Angeles",
+                                "Tokyo",
+                                "undefined",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1074,9 +1660,22 @@
         {
             "language": "javascript",
             "source": [
-                "\r\n"
+                "console.log(`${friendObj1.name}: ${friendObj1.friends ?? 'has no friends'}`)\nconsole.log(`${friendObj2.name}: ${friendObj2.friends ?? 'has no friends'}`)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Jack: John,Joe,Jim,Jeremy",
+                                "Kylie: has no friends",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1088,9 +1687,23 @@
         {
             "language": "javascript",
             "source": [
-                "\r\n\r\n"
+                "for (let movie of movies){\n    console.log(`${movie.title} realeased in ${movie.releaseYear} -- Studio: ${movie.studio?. name ?? 'Independent'}`)\n\n    \n}\n\n"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Oppenheimer realeased in 2023 -- Studio: Warner Bros",
+                                "The Dark Knight realeased in 2009 -- Studio: Sony",
+                                "Gladiator realeased in 2001 -- Studio: Independent",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1109,23 +1722,45 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "let objX = {id: 1};\nlet objY = {id: 1};\n\nconsole.log('X', objX)\nconsole.log('Y', objY)\n\nconsole.log(objX == objY); // false\nconsole.log(objX === objY); // false\n"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "X { id: 1 }",
+                                "Y { id: 1 }",
+                                "false",
+                                "false",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let objZ = objX;\nconsole.log('Z', objZ)\n\nconsole.log(objX === objZ); // true - because objX and objZ are the same object!\nconsole.log(objY === objZ); // false"
             ],
-            "outputs": []
-        },
-        {
-            "language": "javascript",
-            "source": [
-                ""
-            ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Z { id: 1 }",
+                                "true",
+                                "false",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1137,16 +1772,42 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "console.log(objX.id == objY.id); // true"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "true",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                "// Same applies to arrays - must be same object in memory\r\n"
+                "// Same applies to arrays - must be same object in memory\nlet arr1= [1, 2, 3];\nlet arr2 = [1, 2, 3];\nlet arr3 = arr1;\n\nconsole.log( arr1 === arr2); //false\nconsole.log( arr1 === arr3); //true\nconsole.log( arr2 === arr3); //false"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "false",
+                                "true",
+                                "false",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1158,37 +1819,104 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "let testObj = {}"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "if (testObj){\n    console.log('testObj is true')\n} else {\n    console.log('testObj is false');\n}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "testObj is true",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                "// To see if an array is empty, you can use the .length property (remember 0 evaluates to false)\r\n"
+                "let testArr = []\n\nif (testArr){\n    console.log(\"Test Array is true\")\n} else {\n    console.log(\"Test Array is false\")\n};"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Test Array is true",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                "// To see if an object is empty, first use the keys method to get array of keys, check that length\r\n"
+                "// To see if an array is empty, you can use the .length property (remember 0 evaluates to false)\nif (testArr.length){\n    console.log('The testArr.length is true')\n} else {\n    console.log('The testArr.length is false')\n}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "The testArr.length is false",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "// To see if an object is empty, first use the keys method to get array of keys, check that length\n// Object.keys(obj) -> arr of keys\ntestObj = {\n    a: 123,\n    b: 456\n};\n\nconsole.log(Object.keys(testObj));  // Output is [\"a\", \"b\"]"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[ 'a', 'b' ]",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "if (Object.keys(testObj).length){\n    console.log('The testObj keys have length')\n} else {\n    console.log('The testObj keys are empty')\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "The testObj keys have length",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1207,9 +1935,21 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "console.log(person1)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{ name: 'Janet', age: 55, city: 'Louiseville' }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1221,9 +1961,21 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "console.log(Object.keys(person1))"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[ 'name', 'age', 'city' ]",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1235,9 +1987,21 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "console.log(Object.values(person1))"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[ 'Janet', 55, 'Louiseville' ]",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1249,9 +2013,21 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "console.log(Object.entries(person1))"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[ [ 'name', 'Janet' ], [ 'age', 55 ], [ 'city', 'Louiseville' ] ]",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1259,6 +2035,36 @@
                 "<a id=\"tradloop\"></a>\n\n#### Traditional (ES5 and earlier) looping over Object"
             ],
             "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "for (let i=0; i < Object.keys(person1).length; i++){\n    console.log(i)\n    console.log('Key:', Object.keys(person1)[i]);\n    console.log('Value:', Object.keys(person1)[i]);\n    console.log('Value2:', person1[Object.keys(person1)[i]])\n\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "0",
+                                "Key: name",
+                                "Value: name",
+                                "Value2: Janet",
+                                "1",
+                                "Key: age",
+                                "Value: age",
+                                "Value2: 55",
+                                "2",
+                                "Key: city",
+                                "Value: city",
+                                "Value2: Louiseville",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
@@ -1284,14 +2090,14 @@
         {
             "language": "javascript",
             "source": [
-                "var herbie={\r\n    wheels:\"4\",\r\n    color: \"white\",\r\n    make: \"VW\",\r\n    model: \"Beetle\",\r\n    year: 1963,\r\n    number: 53\r\n}"
+                "var herbie={\n    wheels:\"4\",\n    color: \"white\",\n    make: \"VW\",\n    model: \"Beetle\",\n    year: 1963,\n    number: 53\n}"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                "//Solution\r\n\r\n\r\n\r\n"
+                "//Solution\n\n\n\n"
             ],
             "outputs": []
         },
@@ -1305,44 +2111,104 @@
         {
             "language": "markdown",
             "source": [
-                "ES6 marked the introduction of the `for in` loop in JS unlike python which uses this to loop over lists, in JS it is used to loop over the keys of an object.\n\n<strong>Remember:</strong> In JS, to loop over a lis,t we can use the `for of` loop.\n\nsyntax:\n```\nfor (let placeholder in myObject){\n    //do stuff\n}\n```"
+                "ES6 marked the introduction of the `for in` loop in JS unlike python which uses this to loop over lists, in JS it is used to loop over the keys of an object.\n\n<strong>Remember:</strong> In JS, to loop over a list we can use the `for of` loop.\n\nsyntax:\n```\nfor (let varName in myObject){\n    //do stuff\n}\n```"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "for (let key in person1) {\n    console.log('Key:', key);\n    console.log('Value:', person1[key])\n}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Key: name",
+                                "Value: Janet",
+                                "Key: age",
+                                "Value: 55",
+                                "Key: city",
+                                "Value: Louiseville",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                "var cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix'];\r\n"
+                "let euroCountries = ['Spain', 'France', 'England', 'Germany', 'Poland', 'Italy'];\n\nconsole.log('for..of');\nfor(let country of euroCountries){\n    console.log(country);\n};"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "for..of",
+                                "Spain",
+                                "France",
+                                "England",
+                                "Germany",
+                                "Poland",
+                                "Italy",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "console.log('for...in');\nfor (let country in euroCountries){\n    console.log(country)\n}"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "for...in",
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "console.log(typeof euroCountries); // object\n// Tod etermine if an objecty is an Arrat, use the Array.isArray() static mehtod\nconsole.log(Array.isArray(euroCountries)); // true\nconsole.log(Array.isArray(person1)); // false\n"
             ],
-            "outputs": []
-        },
-        {
-            "language": "javascript",
-            "source": [
-                ""
-            ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "object",
+                                "true",
+                                "false",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1361,14 +2227,14 @@
         {
             "language": "javascript",
             "source": [
-                "var kit={\r\n    wheels:\"4\",\r\n    color: \"black\",\r\n    make: \"Pontiac\",\r\n    model: \"Thunderbird\",\r\n    year: 1981,\r\n    number: null\r\n}"
+                "var kit={\n    wheels:\"4\",\n    color: \"black\",\n    make: \"Pontiac\",\n    model: \"Thunderbird\",\n    year: 1981,\n    number: null\n}"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                "//solution\r\n\r\n\r\n\r\n\r\n"
+                "//solution\n\n\n\n\n"
             ],
             "outputs": []
         },
@@ -1389,30 +2255,99 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "function createArray(){\n    return [1, 2, 3, 4]\n};\n"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let returnedArray = createArray();\nconsole.log(returnedArray)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[ 1, 2, 3, 4 ]",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "const createArrayArrow = () => [1, 2, 3, 4]\n// arrow function returns an array instead of a single value"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let returnedArr2 = createArrayArrow();\nconsole.log(returnedArr2); // [1, 3"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[ 1, 2, 3, 4 ]",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "function createObj(){\n    return {id: 123, name: 'Coding Temple'}\n}"
             ],
             "outputs": []
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let returnedObj1 = createObj();\nconsole.log(returnedObj1);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{ id: 123, name: 'Coding Temple' }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "// if you wnat to implicitly return an object in an arrow function, wrap it in parenthesis\nconst createObjArrow = () => ({id: 123, name: 'Coding Temple'})\n\nlet returnedObj2 = createObjArrow();\nconsole.log(returnedObj2);"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{ id: 123, name: 'Coding Temple' }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1431,37 +2366,566 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "let thisObj = {\n    firstName: 'Adonai',\n    lastName: 'Romero',\n    fullNameRegular:  function() {return this.firstName + ' ' + this.lastName},\n    fullNameArrow: () => this.firstName + ' ' + this.lastName\n};\nconsole.log(thisObj)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  firstName: 'Adonai',",
+                                "  lastName: 'Romero',",
+                                "  fullNameRegular: [Function: fullNameRegular],",
+                                "  fullNameArrow: [Function: fullNameArrow]",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "console.log(thisObj.fullNameRegular()); //Adonai Romero\nconsole.log(thisObj.fullNameArrow()); // undefined undefined"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Adonai Romero",
+                                "undefined undefined",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "let anotherThis = {\n    getThisReg: function(){return this},\n    getThisArrow: () => this\n}\n\nconsole.log('outisde of Function', this)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "outisde of Function Object [global] {",
+                                "  global: <ref *1> Object [global] {",
+                                "    global: [Circular *1],",
+                                "    clearImmediate: [Function: clearImmediate],",
+                                "    setImmediate: [Function: setImmediate] {",
+                                "      [Symbol(nodejs.util.promisify.custom)]: [Getter]",
+                                "    },",
+                                "    clearInterval: [Function: clearInterval],",
+                                "    clearTimeout: [Function: clearTimeout],",
+                                "    setInterval: [Function: setInterval],",
+                                "    setTimeout: [Function: setTimeout] {",
+                                "      [Symbol(nodejs.util.promisify.custom)]: [Getter]",
+                                "    },",
+                                "    queueMicrotask: [Function: queueMicrotask],",
+                                "    structuredClone: [Function: structuredClone],",
+                                "    atob: [Getter/Setter],",
+                                "    btoa: [Getter/Setter],",
+                                "    performance: [Getter/Setter],",
+                                "    fetch: [Getter/Setter],",
+                                "    crypto: [Getter],",
+                                "    __extends: [Function: t],",
+                                "    __assign: [Function: assign],",
+                                "    __rest: [Function: r],",
+                                "    __decorate: [Function: i],",
+                                "    __param: [Function: s],",
+                                "    __metadata: [Function: o],",
+                                "    __awaiter: [Function: a],",
+                                "    __generator: [Function: u],",
+                                "    __exportStar: [Function: c],",
+                                "    __createBinding: [Function (anonymous)],",
+                                "    __values: [Function: l],",
+                                "    __read: [Function: h],",
+                                "    __spread: [Function: f],",
+                                "    __spreadArrays: [Function: d],",
+                                "    __spreadArray: [Function: p],",
+                                "    __await: [Function: m],",
+                                "    __asyncGenerator: [Function: g],",
+                                "    __asyncDelegator: [Function: D],",
+                                "    __asyncValues: [Function: y],",
+                                "    __makeTemplateObject: [Function: b],",
+                                "    __importStar: [Function: _],",
+                                "    __importDefault: [Function: v],",
+                                "    __classPrivateFieldGet: [Function: E],",
+                                "    __classPrivateFieldSet: [Function: w],",
+                                "    __dirname: '/Users/adonairomero/Documents/codingTemple/week7/Day3/lecture',",
+                                "    __filename: '/Users/adonairomero/Documents/codingTemple/week7/Day3/lecture/__exec.js',",
+                                "    restTestObj: {",
+                                "      id: 1,",
+                                "      title: 'test',",
+                                "      body: 'this is the body',",
+                                "      author: 'IWROTE THIS'",
+                                "    },",
+                                "    title: 'test',",
+                                "    author: 'IWROTE THIS',",
+                                "    doesntWork: undefined,",
+                                "    destructMe: {",
+                                "      title: 'Intro to JavaScript',",
+                                "      body: 'I really wish JavaScript had static type checking',",
+                                "      createdOn: 2024-04-03T20:04:36.527Z,",
+                                "      author: 'Kevin Beier',",
+                                "      topic: 'Programming',",
+                                "      tags: [Array]",
+                                "    },",
+                                "    destructed: [Function: destructed],",
+                                "    friendObj1: { name: 'Jack', friends: [Array] },",
+                                "    friendObj2: { name: 'Kylie' },",
+                                "    movies: [ [Object], [Object], [Object] ],",
+                                "    movies2: [ [Object], [Object], [Object] ],",
+                                "    objX: { id: 1 },",
+                                "    objY: { id: 1 },",
+                                "    objZ: { id: 1 },",
+                                "    arr1: [ 1, 2, 3 ],",
+                                "    arr2: [ 1, 2, 3 ],",
+                                "    arr3: [ 1, 2, 3 ],",
+                                "    testObj: { a: 123, b: 456 },",
+                                "    testArr: [],",
+                                "    person1: { name: 'Janet', age: 55, city: 'Louiseville' },",
+                                "    person2: { name: 'Max', age: 33, city: 'Charlotte' },",
+                                "    euroCountries: [ 'Spain', 'France', 'England', 'Germany', 'Poland', 'Italy' ],",
+                                "    createArray: [Function: createArray],",
+                                "    returnedArray: [ 1, 2, 3, 4 ],",
+                                "    createArrayArrow: [Function: createArrayArrow],",
+                                "    returnedArr2: [ 1, 2, 3, 4 ],",
+                                "    createObj: [Function: createObj],",
+                                "    returnedObj1: { id: 123, name: 'Coding Temple' },",
+                                "    createObjArrow: [Function: createObjArrow],",
+                                "    returnedObj2: { id: 123, name: 'Coding Temple' },",
+                                "    thisObj: {",
+                                "      firstName: 'Adonai',",
+                                "      lastName: 'Romero',",
+                                "      fullNameRegular: [Function: fullNameRegular],",
+                                "      fullNameArrow: [Function: fullNameArrow]",
+                                "    },",
+                                "    anotherThis: {",
+                                "      getThisReg: [Function: getThisReg],",
+                                "      getThisArrow: [Function: getThisArrow]",
+                                "    }",
+                                "  },",
+                                "  clearImmediate: [Function: clearImmediate],",
+                                "  setImmediate: [Function: setImmediate] {",
+                                "    [Symbol(nodejs.util.promisify.custom)]: [Getter]",
+                                "  },",
+                                "  clearInterval: [Function: clearInterval],",
+                                "  clearTimeout: [Function: clearTimeout],",
+                                "  setInterval: [Function: setInterval],",
+                                "  setTimeout: [Function: setTimeout] {",
+                                "    [Symbol(nodejs.util.promisify.custom)]: [Getter]",
+                                "  },",
+                                "  queueMicrotask: [Function: queueMicrotask],",
+                                "  structuredClone: [Function: structuredClone],",
+                                "  atob: [Getter/Setter],",
+                                "  btoa: [Getter/Setter],",
+                                "  performance: [Getter/Setter],",
+                                "  fetch: [Getter/Setter],",
+                                "  crypto: [Getter],",
+                                "  __extends: [Function: t],",
+                                "  __assign: [Function: assign],",
+                                "  __rest: [Function: r],",
+                                "  __decorate: [Function: i],",
+                                "  __param: [Function: s],",
+                                "  __metadata: [Function: o],",
+                                "  __awaiter: [Function: a],",
+                                "  __generator: [Function: u],",
+                                "  __exportStar: [Function: c],",
+                                "  __createBinding: [Function (anonymous)],",
+                                "  __values: [Function: l],",
+                                "  __read: [Function: h],",
+                                "  __spread: [Function: f],",
+                                "  __spreadArrays: [Function: d],",
+                                "  __spreadArray: [Function: p],",
+                                "  __await: [Function: m],",
+                                "  __asyncGenerator: [Function: g],",
+                                "  __asyncDelegator: [Function: D],",
+                                "  __asyncValues: [Function: y],",
+                                "  __makeTemplateObject: [Function: b],",
+                                "  __importStar: [Function: _],",
+                                "  __importDefault: [Function: v],",
+                                "  __classPrivateFieldGet: [Function: E],",
+                                "  __classPrivateFieldSet: [Function: w],",
+                                "  __dirname: '/Users/adonairomero/Documents/codingTemple/week7/Day3/lecture',",
+                                "  __filename: '/Users/adonairomero/Documents/codingTemple/week7/Day3/lecture/__exec.js',",
+                                "  restTestObj: {",
+                                "    id: 1,",
+                                "    title: 'test',",
+                                "    body: 'this is the body',",
+                                "    author: 'IWROTE THIS'",
+                                "  },",
+                                "  title: 'test',",
+                                "  author: 'IWROTE THIS',",
+                                "  doesntWork: undefined,",
+                                "  destructMe: {",
+                                "    title: 'Intro to JavaScript',",
+                                "    body: 'I really wish JavaScript had static type checking',",
+                                "    createdOn: 2024-04-03T20:04:36.527Z,",
+                                "    author: 'Kevin Beier',",
+                                "    topic: 'Programming',",
+                                "    tags: [ 'JS', 'Async', 'Dynamic Types' ]",
+                                "  },",
+                                "  destructed: [Function: destructed],",
+                                "  friendObj1: { name: 'Jack', friends: [ 'John', 'Joe', 'Jim', 'Jeremy' ] },",
+                                "  friendObj2: { name: 'Kylie' },",
+                                "  movies: [",
+                                "    {",
+                                "      id: 1,",
+                                "      title: 'Oppenheimer',",
+                                "      releaseYear: 2023,",
+                                "      studio: [Object]",
+                                "    },",
+                                "    {",
+                                "      id: 2,",
+                                "      title: 'The Dark Knight',",
+                                "      releaseYear: 2009,",
+                                "      studio: [Object]",
+                                "    },",
+                                "    { id: 3, title: 'Gladiator', releaseYear: 2001 }",
+                                "  ],",
+                                "  movies2: [",
+                                "    {",
+                                "      id: 1,",
+                                "      title: 'Oppenheimer',",
+                                "      releaseYear: 2023,",
+                                "      studio: [Object]",
+                                "    },",
+                                "    {",
+                                "      id: 2,",
+                                "      title: 'The Dark Knight',",
+                                "      releaseYear: 2009,",
+                                "      studio: [Object]",
+                                "    },",
+                                "    { id: 3, title: 'Gladiator', releaseYear: 2001 }",
+                                "  ],",
+                                "  objX: { id: 1 },",
+                                "  objY: { id: 1 },",
+                                "  objZ: { id: 1 },",
+                                "  arr1: [ 1, 2, 3 ],",
+                                "  arr2: [ 1, 2, 3 ],",
+                                "  arr3: [ 1, 2, 3 ],",
+                                "  testObj: { a: 123, b: 456 },",
+                                "  testArr: [],",
+                                "  person1: { name: 'Janet', age: 55, city: 'Louiseville' },",
+                                "  person2: { name: 'Max', age: 33, city: 'Charlotte' },",
+                                "  euroCountries: [ 'Spain', 'France', 'England', 'Germany', 'Poland', 'Italy' ],",
+                                "  createArray: [Function: createArray],",
+                                "  returnedArray: [ 1, 2, 3, 4 ],",
+                                "  createArrayArrow: [Function: createArrayArrow],",
+                                "  returnedArr2: [ 1, 2, 3, 4 ],",
+                                "  createObj: [Function: createObj],",
+                                "  returnedObj1: { id: 123, name: 'Coding Temple' },",
+                                "  createObjArrow: [Function: createObjArrow],",
+                                "  returnedObj2: { id: 123, name: 'Coding Temple' },",
+                                "  thisObj: {",
+                                "    firstName: 'Adonai',",
+                                "    lastName: 'Romero',",
+                                "    fullNameRegular: [Function: fullNameRegular],",
+                                "    fullNameArrow: [Function: fullNameArrow]",
+                                "  },",
+                                "  anotherThis: {",
+                                "    getThisReg: [Function: getThisReg],",
+                                "    getThisArrow: [Function: getThisArrow]",
+                                "  }",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                ""
+                "console.log('regular function', anotherThis.getThisReg());"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "regular function {",
+                                "  getThisReg: [Function: getThisReg],",
+                                "  getThisArrow: [Function: getThisArrow]",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "javascript",
             "source": [
-                "console.log(\"Outside of function:\", this);\r\nconsole.log('--------------------------------------------------------------------------------')\r\nconsole.log(\"Regular Function:\", myTestObj.getThisReg());\r\nconsole.log('--------------------------------------------------------------------------------')\r\n\r\nconsole.log(\"Arrow Function:\", myTestObj.getThisArrow());"
+                "\nconsole.log(\"Arrow Function:\", anotherThis.getThisArrow());"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Arrow Function: Object [global] {",
+                                "  global: <ref *1> Object [global] {",
+                                "    global: [Circular *1],",
+                                "    clearImmediate: [Function: clearImmediate],",
+                                "    setImmediate: [Function: setImmediate] {",
+                                "      [Symbol(nodejs.util.promisify.custom)]: [Getter]",
+                                "    },",
+                                "    clearInterval: [Function: clearInterval],",
+                                "    clearTimeout: [Function: clearTimeout],",
+                                "    setInterval: [Function: setInterval],",
+                                "    setTimeout: [Function: setTimeout] {",
+                                "      [Symbol(nodejs.util.promisify.custom)]: [Getter]",
+                                "    },",
+                                "    queueMicrotask: [Function: queueMicrotask],",
+                                "    structuredClone: [Function: structuredClone],",
+                                "    atob: [Getter/Setter],",
+                                "    btoa: [Getter/Setter],",
+                                "    performance: [Getter/Setter],",
+                                "    fetch: [Getter/Setter],",
+                                "    crypto: [Getter],",
+                                "    __extends: [Function: t],",
+                                "    __assign: [Function: assign],",
+                                "    __rest: [Function: r],",
+                                "    __decorate: [Function: i],",
+                                "    __param: [Function: s],",
+                                "    __metadata: [Function: o],",
+                                "    __awaiter: [Function: a],",
+                                "    __generator: [Function: u],",
+                                "    __exportStar: [Function: c],",
+                                "    __createBinding: [Function (anonymous)],",
+                                "    __values: [Function: l],",
+                                "    __read: [Function: h],",
+                                "    __spread: [Function: f],",
+                                "    __spreadArrays: [Function: d],",
+                                "    __spreadArray: [Function: p],",
+                                "    __await: [Function: m],",
+                                "    __asyncGenerator: [Function: g],",
+                                "    __asyncDelegator: [Function: D],",
+                                "    __asyncValues: [Function: y],",
+                                "    __makeTemplateObject: [Function: b],",
+                                "    __importStar: [Function: _],",
+                                "    __importDefault: [Function: v],",
+                                "    __classPrivateFieldGet: [Function: E],",
+                                "    __classPrivateFieldSet: [Function: w],",
+                                "    __dirname: '/Users/adonairomero/Documents/codingTemple/week7/Day3/lecture',",
+                                "    __filename: '/Users/adonairomero/Documents/codingTemple/week7/Day3/lecture/__exec.js',",
+                                "    restTestObj: {",
+                                "      id: 1,",
+                                "      title: 'test',",
+                                "      body: 'this is the body',",
+                                "      author: 'IWROTE THIS'",
+                                "    },",
+                                "    title: 'test',",
+                                "    author: 'IWROTE THIS',",
+                                "    doesntWork: undefined,",
+                                "    destructMe: {",
+                                "      title: 'Intro to JavaScript',",
+                                "      body: 'I really wish JavaScript had static type checking',",
+                                "      createdOn: 2024-04-03T20:04:36.527Z,",
+                                "      author: 'Kevin Beier',",
+                                "      topic: 'Programming',",
+                                "      tags: [Array]",
+                                "    },",
+                                "    destructed: [Function: destructed],",
+                                "    friendObj1: { name: 'Jack', friends: [Array] },",
+                                "    friendObj2: { name: 'Kylie' },",
+                                "    movies: [ [Object], [Object], [Object] ],",
+                                "    movies2: [ [Object], [Object], [Object] ],",
+                                "    objX: { id: 1 },",
+                                "    objY: { id: 1 },",
+                                "    objZ: { id: 1 },",
+                                "    arr1: [ 1, 2, 3 ],",
+                                "    arr2: [ 1, 2, 3 ],",
+                                "    arr3: [ 1, 2, 3 ],",
+                                "    testObj: { a: 123, b: 456 },",
+                                "    testArr: [],",
+                                "    person1: { name: 'Janet', age: 55, city: 'Louiseville' },",
+                                "    person2: { name: 'Max', age: 33, city: 'Charlotte' },",
+                                "    euroCountries: [ 'Spain', 'France', 'England', 'Germany', 'Poland', 'Italy' ],",
+                                "    createArray: [Function: createArray],",
+                                "    returnedArray: [ 1, 2, 3, 4 ],",
+                                "    createArrayArrow: [Function: createArrayArrow],",
+                                "    returnedArr2: [ 1, 2, 3, 4 ],",
+                                "    createObj: [Function: createObj],",
+                                "    returnedObj1: { id: 123, name: 'Coding Temple' },",
+                                "    createObjArrow: [Function: createObjArrow],",
+                                "    returnedObj2: { id: 123, name: 'Coding Temple' },",
+                                "    thisObj: {",
+                                "      firstName: 'Adonai',",
+                                "      lastName: 'Romero',",
+                                "      fullNameRegular: [Function: fullNameRegular],",
+                                "      fullNameArrow: [Function: fullNameArrow]",
+                                "    },",
+                                "    anotherThis: {",
+                                "      getThisReg: [Function: getThisReg],",
+                                "      getThisArrow: [Function: getThisArrow]",
+                                "    }",
+                                "  },",
+                                "  clearImmediate: [Function: clearImmediate],",
+                                "  setImmediate: [Function: setImmediate] {",
+                                "    [Symbol(nodejs.util.promisify.custom)]: [Getter]",
+                                "  },",
+                                "  clearInterval: [Function: clearInterval],",
+                                "  clearTimeout: [Function: clearTimeout],",
+                                "  setInterval: [Function: setInterval],",
+                                "  setTimeout: [Function: setTimeout] {",
+                                "    [Symbol(nodejs.util.promisify.custom)]: [Getter]",
+                                "  },",
+                                "  queueMicrotask: [Function: queueMicrotask],",
+                                "  structuredClone: [Function: structuredClone],",
+                                "  atob: [Getter/Setter],",
+                                "  btoa: [Getter/Setter],",
+                                "  performance: [Getter/Setter],",
+                                "  fetch: [Getter/Setter],",
+                                "  crypto: [Getter],",
+                                "  __extends: [Function: t],",
+                                "  __assign: [Function: assign],",
+                                "  __rest: [Function: r],",
+                                "  __decorate: [Function: i],",
+                                "  __param: [Function: s],",
+                                "  __metadata: [Function: o],",
+                                "  __awaiter: [Function: a],",
+                                "  __generator: [Function: u],",
+                                "  __exportStar: [Function: c],",
+                                "  __createBinding: [Function (anonymous)],",
+                                "  __values: [Function: l],",
+                                "  __read: [Function: h],",
+                                "  __spread: [Function: f],",
+                                "  __spreadArrays: [Function: d],",
+                                "  __spreadArray: [Function: p],",
+                                "  __await: [Function: m],",
+                                "  __asyncGenerator: [Function: g],",
+                                "  __asyncDelegator: [Function: D],",
+                                "  __asyncValues: [Function: y],",
+                                "  __makeTemplateObject: [Function: b],",
+                                "  __importStar: [Function: _],",
+                                "  __importDefault: [Function: v],",
+                                "  __classPrivateFieldGet: [Function: E],",
+                                "  __classPrivateFieldSet: [Function: w],",
+                                "  __dirname: '/Users/adonairomero/Documents/codingTemple/week7/Day3/lecture',",
+                                "  __filename: '/Users/adonairomero/Documents/codingTemple/week7/Day3/lecture/__exec.js',",
+                                "  restTestObj: {",
+                                "    id: 1,",
+                                "    title: 'test',",
+                                "    body: 'this is the body',",
+                                "    author: 'IWROTE THIS'",
+                                "  },",
+                                "  title: 'test',",
+                                "  author: 'IWROTE THIS',",
+                                "  doesntWork: undefined,",
+                                "  destructMe: {",
+                                "    title: 'Intro to JavaScript',",
+                                "    body: 'I really wish JavaScript had static type checking',",
+                                "    createdOn: 2024-04-03T20:04:36.527Z,",
+                                "    author: 'Kevin Beier',",
+                                "    topic: 'Programming',",
+                                "    tags: [ 'JS', 'Async', 'Dynamic Types' ]",
+                                "  },",
+                                "  destructed: [Function: destructed],",
+                                "  friendObj1: { name: 'Jack', friends: [ 'John', 'Joe', 'Jim', 'Jeremy' ] },",
+                                "  friendObj2: { name: 'Kylie' },",
+                                "  movies: [",
+                                "    {",
+                                "      id: 1,",
+                                "      title: 'Oppenheimer',",
+                                "      releaseYear: 2023,",
+                                "      studio: [Object]",
+                                "    },",
+                                "    {",
+                                "      id: 2,",
+                                "      title: 'The Dark Knight',",
+                                "      releaseYear: 2009,",
+                                "      studio: [Object]",
+                                "    },",
+                                "    { id: 3, title: 'Gladiator', releaseYear: 2001 }",
+                                "  ],",
+                                "  movies2: [",
+                                "    {",
+                                "      id: 1,",
+                                "      title: 'Oppenheimer',",
+                                "      releaseYear: 2023,",
+                                "      studio: [Object]",
+                                "    },",
+                                "    {",
+                                "      id: 2,",
+                                "      title: 'The Dark Knight',",
+                                "      releaseYear: 2009,",
+                                "      studio: [Object]",
+                                "    },",
+                                "    { id: 3, title: 'Gladiator', releaseYear: 2001 }",
+                                "  ],",
+                                "  objX: { id: 1 },",
+                                "  objY: { id: 1 },",
+                                "  objZ: { id: 1 },",
+                                "  arr1: [ 1, 2, 3 ],",
+                                "  arr2: [ 1, 2, 3 ],",
+                                "  arr3: [ 1, 2, 3 ],",
+                                "  testObj: { a: 123, b: 456 },",
+                                "  testArr: [],",
+                                "  person1: { name: 'Janet', age: 55, city: 'Louiseville' },",
+                                "  person2: { name: 'Max', age: 33, city: 'Charlotte' },",
+                                "  euroCountries: [ 'Spain', 'France', 'England', 'Germany', 'Poland', 'Italy' ],",
+                                "  createArray: [Function: createArray],",
+                                "  returnedArray: [ 1, 2, 3, 4 ],",
+                                "  createArrayArrow: [Function: createArrayArrow],",
+                                "  returnedArr2: [ 1, 2, 3, 4 ],",
+                                "  createObj: [Function: createObj],",
+                                "  returnedObj1: { id: 123, name: 'Coding Temple' },",
+                                "  createObjArrow: [Function: createObjArrow],",
+                                "  returnedObj2: { id: 123, name: 'Coding Temple' },",
+                                "  thisObj: {",
+                                "    firstName: 'Adonai',",
+                                "    lastName: 'Romero',",
+                                "    fullNameRegular: [Function: fullNameRegular],",
+                                "    fullNameArrow: [Function: fullNameArrow]",
+                                "  },",
+                                "  anotherThis: {",
+                                "    getThisReg: [Function: getThisReg],",
+                                "    getThisArrow: [Function: getThisArrow]",
+                                "  }",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "function greeting(){\n    return 'Greetings ' + this.name\n};\n\nlet p1 = {\n    name: 'Frank',\n    age: 22,\n    greet: greeting\n}\n\nlet p2 = {\n    name: 'Danielle',\n    age: 33,\n    greet: greeting\n};\n\nconsole.log(p1.greet())\nconsole.log(p2.greet())"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Greetings Frank",
+                                "Greetings Danielle",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -1487,7 +2951,7 @@
         {
             "language": "javascript",
             "source": [
-                "console.log(typeof testArray) //object\r\nconsole.log(testArray instanceof Array) //true\r\nconsole.log(Array instanceof Object) //true\r\nconsole.log(Array.isArray(testArray)) //true\r\nconsole.log(\"========\")\r\nconsole.log(testArray instanceof Object) //true\r\nconsole.log(testObj instanceof Object)  //true\r\nconsole.log(Array.isArray(testObj)) //false\r\nconsole.log(typeof 'hello') //string\r\nconsole.log(\"========\")\r\nconsole.log(typeof {}) //object\r\nconsole.log('hello' instanceof Object) //False\r\nconsole.log(typeof null); //object\r\nconsole.log(null instanceof Object) //False\r\nconsole.log({key:1} instanceof Object)  //true\r\n"
+                "console.log(typeof testArray) //object\nconsole.log(testArray instanceof Array) //true\nconsole.log(Array instanceof Object) //true\nconsole.log(Array.isArray(testArray)) //true\nconsole.log(\"========\")\nconsole.log(testArray instanceof Object) //true\nconsole.log(testObj instanceof Object)  //true\nconsole.log(Array.isArray(testObj)) //false\nconsole.log(typeof 'hello') //string\nconsole.log(\"========\")\nconsole.log(typeof {}) //object\nconsole.log('hello' instanceof Object) //False\nconsole.log(typeof null); //object\nconsole.log(null instanceof Object) //False\nconsole.log({key:1} instanceof Object)  //true\n"
             ],
             "outputs": []
         },
